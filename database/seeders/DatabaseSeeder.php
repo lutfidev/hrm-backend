@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Holiday;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,23 +17,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => Hash::make('12345678'),
-        ]);
-
-        User::factory()->create([
-            'name' => 'Lutfi User',
-            'email' => 'Lutfi@example.com',
-            'password' => Hash::make('12345678'),
-        ]);
 
         $this->call([
             CompanySeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
             PermissionRoleSeeder::class,
+            UserSeeder::class,
             DepartmentSeeder::class,
             DesignationSeeder::class,
             ShiftSeeder::class,
@@ -42,7 +33,8 @@ class DatabaseSeeder extends Seeder
             LeaveTypeSeeder::class,
             LeaveSeeder::class,
             AttendanceSeeder::class,
-            PayrollSeeder::class
+            PayrollSeeder::class,
+
         ]);
     }
 }

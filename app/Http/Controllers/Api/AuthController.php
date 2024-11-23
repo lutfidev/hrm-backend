@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
+        //validate request email and password
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
+        //if credentials are correct
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
